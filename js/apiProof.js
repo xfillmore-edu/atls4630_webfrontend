@@ -53,7 +53,7 @@ function displayReturn(data) {
     }
     document.getElementById('data').innerHTML += '</ul>';
 
-    document.getElementById('data').innerHTML += "<p>Can you believe they don't have Robert Frost, Sylvia Plath, and Maya Angelou?";
+    document.getElementById('data').innerHTML += "<p>Can you believe they don't have Robert Frost, Sylvia Plath, and Maya Angelou?</p>";
 
     console.log('displayed data');
 }
