@@ -3,13 +3,14 @@ import React from 'react';
 class ListItem extends React.Component {
     render() {
         const content = this.props.content;
-        const key = this.props.key;
+        const xkey = this.props.zkey;
+
+        console.log('inside ListItem');
 
         return (
             <tr>
-                {/* <td>{content}</td> */}
-                <td>hello</td>
-                <td><button type='button' onClick={()=>this.props.action(key)}>Mark complete</button></td>
+                <td>{content}</td>
+                <td><button type='button' onClick={()=>this.props.action(xkey)}>Mark complete</button></td>
             </tr>
         );
     }

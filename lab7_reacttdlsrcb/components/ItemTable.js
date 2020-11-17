@@ -31,7 +31,7 @@ class ItemTable extends React.Component {
         // content is defined by the value in the text field at time of submit
         var updatedItems = this.state.items.concat([{
             content: this.state.newItemInput,
-            key: this.state.nextKeyValue
+            xkey: this.state.nextKeyValue
         }]);
         this.setState({
             items: updatedItems, // overwrite previous items list with added item version
@@ -40,10 +40,10 @@ class ItemTable extends React.Component {
 
     }
 
-    removeTDLactivity(key) {
+    removeTDLactivity(zkey) {
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
         // copy the current items list but filter out the activity with the argument key
-        var updatedItems = this.state.items.filter(activity => activity.key !== key);
+        var updatedItems = this.state.items.filter(activity => activity.xkey !== zkey);
         this.setState({
             items: updatedItems // overwrite previous items list with removed item version
         });
@@ -51,24 +51,6 @@ class ItemTable extends React.Component {
     }
 
     render() {
-        // const rows = [];
-
-        // convert the items array from state into an array of ListItems (component)
-        // this.state.items.forEach((activity) => {
-
-        const rows = this.state.items.forEach((activity) => {
-            <ListItem content={activity.content} key={activity.key} action={this.removeTDLactivity} />
-            console.log(activity.content);
-        
-
-            // adds each item to the array of rows
-            // rows.push (
-            //     // pass content, key, and removable action as props
-            //     // removable action refers back to higher level function in ItemTable component
-            //     <ListItem content={acitivity.content} key={acitivity.key} action={this.removeTDLactivity} />
-            // );
-        });
-        console.log(rows);
 
         var bodystyle = {
             "margin": "3%"
@@ -84,7 +66,7 @@ class ItemTable extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {rows} {/* uses the array created above of ListItems */}
+                        {this.state.items.map((activity) => <ListItem content={activity.content} zkey={activity.xkey} action={this.removeTDLactivity} /> )}
                     </tbody>
                 </table>
                 {/* Text input and button for adding to-do activities to list */}
